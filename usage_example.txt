@@ -1,0 +1,29 @@
+#===============================================
+#     SERVER   SSH terminal
+#===============================================
+
+[anil@rhelhost work]$ ./reverser
+Reverser running on port [8081]
+[127.0.0.1]:[48814]  [ABCD] --> [DCBA]
+[127.0.0.1]:[48818]  [1 2 3 4 5] --> [5 4 3 2 1]
+
+
+
+
+
+
+
+#===============================================
+#     CLIENT   SSH terminal
+#===============================================
+[anil@rhelhost work]$ ./client ABCD
+
+[DCBA]
+[anil@rhelhost work]$ ./client '1 2 3 4 5'
+
+[5 4 3 2 1]
+[anil@rhelhost work]$ lsof -i -P -n | grep -i tcp
+node     2338 anil   18u  IPv4  42637      0t0  TCP 127.0.0.1:38609 (LISTEN)
+node     2338 anil   21u  IPv4  42642      0t0  TCP 127.0.0.1:38609->127.0.0.1:46310 (ESTABLISHED)
+node     2433 anil   19u  IPv4  42671      0t0  TCP 127.0.0.1:38609->127.0.0.1:46312 (ESTABLISHED)
+reverser 6883 anil    3u  IPv4  66592      0t0  TCP *:8081 (LISTEN)
